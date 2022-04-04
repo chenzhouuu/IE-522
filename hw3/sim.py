@@ -24,6 +24,7 @@ class Simulation:
         self.MaxCarsAvg =[]
         self.TimeSpentAvg = [] 
         self.NumCarsAvg = []
+        self.NUmCarsT = []
         self.args = args
         self.car_counts_df = pd.read_excel('CarCounts.xls')
         if self.args.stationary: 
@@ -73,6 +74,8 @@ class Simulation:
             self.MaxCarsAvg.append(self.MaxCars)
             self.TimeSpentAvg.append(self.TimeSpent.Mean())
             self.NumCarsAvg.append(self.ParkingLot.Mean())
+            if sc.Clock // 8 == 0:
+                self.NUmCarsT.append(self.ParkingLot)
     
         print(np.mean(self.MaxCarsAvg)) 
         print(np.std(self.MaxCarsAvg)) 
